@@ -1,4 +1,7 @@
-import { isLive, precomputeFlags } from "@/feature-flags";
+"use client";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
+// import { isLive, precomputeFlags } from "@/feature-flags";
 
 type ItemProps = {
 	title: string;
@@ -24,7 +27,7 @@ const List = ({ items }: { items: ItemProps[] }) => {
 };
 
 export default async function Home({ params }: { params: { code: string } }) {
-	const isLiveFlag = await isLive(params.code, precomputeFlags);
+	// const isLiveFlag = await isLive(params.code, precomputeFlags);
 	return (
 		<main className="flex justify-center p-xl">
 			<div className="flex flex-col gap-lg max-w-lg">
@@ -35,6 +38,7 @@ export default async function Home({ params }: { params: { code: string } }) {
 					</span>
 					Things are bad. We can fix this.
 				</p>
+				<Button onClick={() => toast({ title: "Test Toast" })}>Test Toast</Button>
 			</div>
 		</main>
 	);
