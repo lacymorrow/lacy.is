@@ -29,9 +29,20 @@ type SocialUrlResponse = {
 };
 
 const Home = async ({ params }: { params: { code: string } }) => {
-	// Fetch the social URL from the API using an absolute URL
-	const response = await fetch(`${getBaseUrl()}/api/me`);
-	const { url: socialUrl }: SocialUrlResponse = await response.json();
+	let socialUrl = '';
+	try {
+		const baseUrl = getBaseUrl();
+		console.log(`Fetching from: ${baseUrl}/api/me`);
+		const response = await fetch(`${baseUrl}/api/me`);
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+		const data: SocialUrlResponse = await response.json();
+		socialUrl = data.url;
+	} catch (error) {
+		console.error('Error fetching social URL:', error);
+		socialUrl = 'https://twitter.com/lacybuilds'; // Fallback URL
+	}
 
 	return (
 		<main className="flex justify-center p-xl">
