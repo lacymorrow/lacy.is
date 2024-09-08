@@ -30,7 +30,7 @@ type SocialUrlResponse = {
 
 const Home = async ({ params }: { params: { code: string } }) => {
 	// Fetch the social URL from the API
-	const response = await fetch('http://localhost:3000/api/social-url');
+	const response = await fetch('/api/me');
 	const { url: socialUrl }: SocialUrlResponse = await response.json();
 
 	return (
