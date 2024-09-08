@@ -1,3 +1,4 @@
+import { getBaseUrl } from "@/lib";
 
 type ItemProps = {
 	title: string;
@@ -23,23 +24,20 @@ const List = ({ items }: { items: ItemProps[] }) => {
 };
 
 // Define the type for the API response
-type SocialUrlResponse = {
+type lacyUrlResponse = {
 	url: string;
 };
 
 const HomePage = async () => {
 	// Fetch the social URL
-	const socialUrl = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/me`, {
-		method: "GET",
-		headers: {
-			"Content-Type": "text/plain",
-		},
-	})
-	.then((res) => res.text())
-	.catch((error) => {
-		console.error('Error fetching social URL:', error);
-		return 'https://lacymorrow.com'; // Fallback URL
-	});
+	const baseUrl = getBaseUrl();
+	console.log(`Fetching from: ${baseUrl}/api/me`);
+	const lacyUrl = await fetch(`${baseUrl}/api/me`)
+		.then((res) => res.text())
+		.catch((error) => {
+			console.error("Error fetching social URL:", error);
+			return "https://lacymorrow.com"; // Fallback URL
+		});
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center">
@@ -53,11 +51,11 @@ const HomePage = async () => {
 				</p>
 				<a
 					className="mt-4 text-xl text-blue-500 hover:underline"
-					href={socialUrl}
+					href={lacyUrl}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					Follow me on Twitter
+					ℒ
 				</a>
 			</div>
 		</main>
