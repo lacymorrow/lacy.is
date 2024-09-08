@@ -1,4 +1,4 @@
-import { getBaseUrl } from "@acme/lib/utils/getBaseUrl";
+import { getBaseUrl } from "@/lib/utils/getBaseUrl";
 
 type ItemProps = {
 	title: string;
