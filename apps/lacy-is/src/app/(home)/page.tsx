@@ -34,7 +34,12 @@ const HomePage = async () => {
 		headers: {
 			"Content-Type": "text/plain",
 		},
-	}).then((res) => res.text());
+	})
+	.then((res) => res.text())
+	.catch((error) => {
+		console.error('Error fetching social URL:', error);
+		return 'https://lacymorrow.com'; // Fallback URL
+	});
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center">
