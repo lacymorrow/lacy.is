@@ -1,6 +1,3 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
 // import { isLive, precomputeFlags } from "@/feature-flags";
 
 type ItemProps = {
@@ -38,7 +35,6 @@ export default async function Home({ params }: { params: { code: string } }) {
 					</span>
 					Things are bad. We can fix this.
 				</p>
-				<Button onClick={() => toast({ title: "Test Toast" })}>Test Toast</Button>
 			</div>
 		</main>
 	);
