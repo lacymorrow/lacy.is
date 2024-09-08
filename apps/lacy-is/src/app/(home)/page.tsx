@@ -1,4 +1,4 @@
-// import { isLive, precomputeFlags } from "@/feature-flags";
+import { getBaseUrl } from "@acme/lib/utils/getBaseUrl";
 
 type ItemProps = {
 	title: string;
@@ -29,8 +29,8 @@ type SocialUrlResponse = {
 };
 
 const Home = async ({ params }: { params: { code: string } }) => {
-	// Fetch the social URL from the API
-	const response = await fetch('/api/me');
+	// Fetch the social URL from the API using an absolute URL
+	const response = await fetch(`${getBaseUrl()}/api/me`);
 	const { url: socialUrl }: SocialUrlResponse = await response.json();
 
 	return (
