@@ -23,19 +23,33 @@ const List = ({ items }: { items: ItemProps[] }) => {
 	);
 };
 
-export default async function Home({ params }: { params: { code: string } }) {
-	// const isLiveFlag = await isLive(params.code, precomputeFlags);
+// Define the type for the API response
+type SocialUrlResponse = {
+	url: string;
+};
+
+const Home = async ({ params }: { params: { code: string } }) => {
+	// Fetch the social URL from the API
+	const response = await fetch('http://localhost:3000/api/social-url');
+	const { url: socialUrl }: SocialUrlResponse = await response.json();
+
 	return (
 		<main className="flex justify-center p-xl">
 			<div className="flex flex-col gap-lg max-w-lg">
-				<h1 className="text-foreground text-xl font-semibold">Lacy <em>is.</em></h1>
-				<p className="fade-in-up">
-					<span className="text-lg font-serif italic mr-1">
-						Building things.
-					</span>
-					Things are bad. We can fix this.
-				</p>
+					<h1 className="text-foreground text-xl font-semibold">Lacy <em>is.</em></h1>
+					<p className="fade-in-up">
+						<span className="text-lg font-serif italic mr-1">
+							Building things.
+						</span>
+						Things are bad. We can fix this.
+					</p>
+					{/* Display the social URL */}
+					<a href={socialUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+						ℒ𝒶𝒸𝓎
+					</a>
 			</div>
 		</main>
 	);
-}
+};
+
+export default Home;
