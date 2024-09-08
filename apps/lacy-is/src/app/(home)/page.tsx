@@ -1,4 +1,3 @@
-import { getBaseUrl } from "@/lib/utils/getBaseUrl";
 
 type ItemProps = {
 	title: string;
@@ -28,39 +27,36 @@ type SocialUrlResponse = {
 	url: string;
 };
 
-const Home = async ({ params }: { params: { code: string } }) => {
-	let socialUrl = '';
-	try {
-		const baseUrl = getBaseUrl();
-		console.log(`Fetching from: ${baseUrl}/api/me`);
-		const response = await fetch(`${baseUrl}/api/me`);
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-		const data: SocialUrlResponse = await response.json();
-		socialUrl = data.url;
-	} catch (error) {
-		console.error('Error fetching social URL:', error);
-		socialUrl = 'https://twitter.com/lacybuilds'; // Fallback URL
-	}
+const HomePage = async () => {
+	// Fetch the social URL
+	const socialUrl = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/me`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "text/plain",
+		},
+	}).then((res) => res.text());
 
 	return (
-		<main className="flex justify-center p-xl">
+		<main className="flex min-h-screen flex-col items-center justify-center">
 			<div className="flex flex-col gap-lg max-w-lg">
-					<h1 className="text-foreground text-xl font-semibold">Lacy <em>is.</em></h1>
-					<p className="fade-in-up">
-						<span className="text-lg font-serif italic mr-1">
-							Building things.
-						</span>
-						Things are bad. We can fix this.
-					</p>
-					{/* Display the social URL */}
-					<a href={socialUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-						ℒ𝒶𝒸𝓎
-					</a>
+				<h1 className="text-foreground text-xl font-semibold">Lacy <em>is.</em></h1>
+				<p className="fade-in-up">
+					<span className="text-lg font-serif italic mr-1">
+						Building things.
+					</span>
+					Things are bad. We can fix this.
+				</p>
+				<a
+					className="mt-4 text-xl text-blue-500 hover:underline"
+					href={socialUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Follow me on Twitter
+				</a>
 			</div>
 		</main>
 	);
 };
 
-export default Home;
+export default HomePage;
