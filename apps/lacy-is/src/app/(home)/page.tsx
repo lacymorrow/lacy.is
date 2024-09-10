@@ -41,7 +41,7 @@ const HomePage = async () => {
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center">
-			<div className="flex flex-col gap-lg max-w-lg">
+			<article className="prose flex flex-col max-w-lg">
 				<h1 className="text-foreground text-xl font-semibold">Lacy <em>is.</em></h1>
 				<p className="fade-in-up">
 					<span className="text-lg font-serif italic mr-1">
@@ -49,15 +49,15 @@ const HomePage = async () => {
 					</span>
 					Things are bad. We can fix this.
 				</p>
-				<a
+				{/* <a
 					className="mt-4 text-xl text-blue-500 hover:underline"
 					href={lacyUrl}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					ℒ
-				</a>
-			</div>
+				</a> */}
+			</article>
 		</main>
 	);
 };

@@ -16,14 +16,12 @@ const config = {
     "@acme/validators",
     "@/components",
     "@/lib",
+    "@/tooling",
   ],
 
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  experimental: {
-    serverActions: true,
-  },
 };
 
 export default config;
