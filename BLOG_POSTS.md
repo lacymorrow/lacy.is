@@ -1,5 +1,4 @@
 ```
-
 export const CREATE_USER_ROLES = {
   CreateVendor: "VENDOR",
   CreateUser: "USER",
@@ -7,10 +6,14 @@ export const CREATE_USER_ROLES = {
 export type CreateUserRole = (typeof CREATE_USER_ROLES)[keyof typeof CREATE_USER_ROLES];
 ```
 
+---
+
 type PaginationButtonProps = {
 isActive?: boolean;
 } & Pick<ButtonProps, "size"> &
 React.ComponentProps<typeof Button>;
+
+---
 
 # 3
 
@@ -26,4 +29,16 @@ export const ROLES = Object.fromEntries(
 ) as AllRoles;
 ```
 
+---
+
 getSchemaDefaults
+
+---
+
+# DB Prefix
+
+DB_PREFIX="juicy"
+
+POSTGRES_DB=${DB_PREFIX}
+POSTGRES_USER=${DB_PREFIX}\_user
+POSTGRES_PASSWORD=${DB_PREFIX}\_password

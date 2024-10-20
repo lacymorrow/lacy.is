@@ -13,6 +13,7 @@
     "db:push": "turbo -F @acme/db push",
     "db:studio": "turbo -F @acme/db studio",
     "dev": "turbo watch dev -F @acme/is...",
+    "dev:log": "turbo watch dev -F @acme/log...",
     "dev:what": "turbo watch dev -F @acme/what...",
     "dev:next": "turbo watch dev -F @acme/nextjs...",
     "dev:nextra": "turbo watch dev -F @acme/nextra...",
