@@ -53,4 +53,4 @@ function ThemeChooser() {
   );
 }
 
-export { ThemeProvider, ThemeToggle };
+export { ThemeChooser, ThemeProvider, ThemeToggle };
