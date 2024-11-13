@@ -1,21 +1,34 @@
 import { getBaseUrl } from "@/lib";
 
+import { LacyLogo } from "~/app/(home)/_components/lacy-logo";
+import AnimatedNoise from "~/app/(home)/_components/noise";
+
 type ItemProps = {
   title: string;
+  description?: string;
   link: string;
 };
 
-const Item = ({ title, link }: ItemProps) => {
+const Item = ({ title, description, link }: ItemProps) => {
   return (
     <li className="flex flex-col justify-center">
-      <a href={link}>{title}</a>
+      <a
+        href={link}
+        className="flex items-center justify-between gap-2"
+        target="_blank"
+      >
+        {title}
+        {description && (
+          <span className="text-sm text-muted-foreground">{description}</span>
+        )}
+      </a>
     </li>
   );
 };
 
 const List = ({ items }: { items: ItemProps[] }) => {
   return (
-    <ul className="grid grid-cols-1 gap-2 md:grid-cols-3">
+    <ul className="grid grid-cols-1 gap-2">
       {items.map((item) => (
         <Item key={item.title} {...item} />
       ))}
@@ -41,29 +54,23 @@ const HomePage = async () => {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <article className="prose flex max-w-lg flex-col">
-        <h1 className="text-xl font-semibold text-foreground">
-          Lacy <em>is.</em>
-        </h1>
-        <p className="fade-in-up">
-          <span className="mr-1 font-serif text-lg italic">Building</span>
-        </p>
-        {/* <ul>
-
-          <li>
-            <a href="https://fly5.live">fly5.live</a>: aerial cinematography in
-            Charlotte, NC
-          </li>
-        </ul> */}
-
-        <a
-          className="mt-4 text-xl hover:underline"
-          href={lacyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ℒ
-        </a>
+      <AnimatedNoise opacity={0.1} />
+      <LacyLogo />
+      <article className="flex max-w-lg flex-col">
+        <List
+          items={[
+            {
+              title: "shipkit",
+              description: "launch apps quicker",
+              link: "https://shipkit-five.vercel.app",
+            },
+            {
+              title: "fly5",
+              description: "aerial cinematography",
+              link: "https://fly5.live",
+            },
+          ]}
+        />
       </article>
     </main>
   );
