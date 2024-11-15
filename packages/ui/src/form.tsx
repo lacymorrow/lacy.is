@@ -146,7 +146,10 @@ const FormControl = React.forwardRef<
       {...props}
     />
   );
-});
+}) as React.ForwardRefExoticComponent<
+  React.ComponentPropsWithoutRef<typeof Slot> &
+    React.RefAttributes<React.ElementRef<typeof Slot>>
+>;
 FormControl.displayName = "FormControl";
 
 const FormDescription = React.forwardRef<
@@ -191,15 +194,15 @@ const FormMessage = React.forwardRef<
 FormMessage.displayName = "FormMessage";
 
 export {
-  useForm,
-  useFormField,
   Form,
-  FormItem,
-  FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
   FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useForm,
+  useFormField,
 };
 
 export { useFieldArray } from "react-hook-form";
