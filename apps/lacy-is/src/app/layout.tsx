@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     description,
     url: "https://lacy.is",
     siteName: "lacy.is",
-    images: [{ url: "/api/og", width: 1200, height: 630, alt: "lacy.is" }],
+    images: [{ url: "https://lacy.is/api/og", width: 1200, height: 630, alt: "lacy.is" }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/api/og"],
+    images: ["https://lacy.is/api/og"],
     creator: "@lacybuilds",
     title,
     description,
