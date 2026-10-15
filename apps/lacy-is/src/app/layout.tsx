@@ -15,7 +15,7 @@ import { env } from "~/env";
 
 const title = "Lacy Morrow";
 const description =
-  "Personal site of Lacy Morrow, developer and founder. Links to Shipkit and fly5.";
+  "Lacy Morrow builds software. Juno, Shipkit, Lacy Shell, CrossOver, fly5 and Build and Serve, all in one place.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -33,9 +33,11 @@ export const metadata: Metadata = {
     description,
     url: "https://lacy.is",
     siteName: "lacy.is",
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "lacy.is" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/api/og"],
     creator: "@lacybuilds",
     title,
     description,

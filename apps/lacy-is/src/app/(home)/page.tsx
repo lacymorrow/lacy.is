@@ -77,14 +77,34 @@ const HomePage = async () => {
         <List
           items={[
             {
+              title: "juno",
+              description: "a Mac you can talk to",
+              link: "https://junebug.ai",
+            },
+            {
               title: "shipkit",
-              description: "launch apps quicker",
-              link: "https://shipkit-five.vercel.app",
+              description: "launch a Next.js app this week",
+              link: "https://shipkit.io",
+            },
+            {
+              title: "lacy shell",
+              description: "plain English in your terminal",
+              link: "https://lacy.sh",
+            },
+            {
+              title: "crossover",
+              description: "a crosshair for any game",
+              link: "https://crossover.lacy.sh",
             },
             {
               title: "fly5",
               description: "aerial cinematography",
               link: "https://fly5.live",
+            },
+            {
+              title: "build and serve",
+              description: "websites and AI systems, built for you",
+              link: "https://buildandserve.com",
             },
           ]}
         />

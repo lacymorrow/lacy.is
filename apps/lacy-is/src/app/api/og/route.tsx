@@ -1,62 +1,31 @@
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from "@vercel/og";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
-export function handler() {
-    return new ImageResponse(
-        (
-            <div
-                style={{
-                    display: 'flex',
-                    height: '100%',
-                    width: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexDirection: 'column',
-                    backgroundImage: 'linear-gradient(to bottom, #dbf4ff, #fff1f1)',
-                    fontSize: 60,
-                    letterSpacing: -2,
-                    fontWeight: 700,
-                    textAlign: 'center',
-                }}
-            >
-                <div
-                    style={{
-                        backgroundImage: 'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
-                        backgroundClip: 'text',
-                        WebkitBackgroundClip: 'text',
-                        color: 'transparent',
-                    }}
-                >
-                    Go
-                </div>
-                <div
-                    style={{
-                        backgroundImage: 'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
-                        backgroundClip: 'text',
-                        WebkitBackgroundClip: 'text',
-                        color: 'transparent',
-                    }}
-                >
-                    Build
-                </div>
-                <div
-                    style={{
-                        backgroundImage: 'linear-gradient(90deg, rgb(255, 77, 77), rgb(249, 203, 40))',
-                        backgroundClip: 'text',
-                        WebkitBackgroundClip: 'text',
-                        color: 'transparent',
-                    }}
-                >
-                    Things
-                </div>
-            </div>
-        ),
-        {
-            width: 1200,
-            height: 600,
-        }
-    );
+// Share card for lacy.is: the site's own black and white, nothing else.
+export function GET() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          width: "100%",
+          height: "100%",
+          padding: "0 96px",
+          background: "#000",
+          color: "#fff",
+        }}
+      >
+        <div style={{ fontSize: 128, fontWeight: 700, letterSpacing: -4 }}>
+          lacy.is
+        </div>
+        <div style={{ fontSize: 40, color: "#a1a1aa", marginTop: 16 }}>
+          Lacy Morrow builds software.
+        </div>
+      </div>
+    ),
+    { width: 1200, height: 630 },
+  );
 }
-
-export { handler as GET, handler as POST };
