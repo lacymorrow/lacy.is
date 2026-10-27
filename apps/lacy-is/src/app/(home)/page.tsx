@@ -2,6 +2,7 @@ import { getBaseUrl } from "@/lib";
 
 import { LacyLogo } from "~/app/(home)/_components/lacy-logo";
 import AnimatedNoise from "~/app/(home)/_components/noise";
+import { SITE_URL } from "~/site";
 
 type ItemProps = {
   title: string;
@@ -56,7 +57,7 @@ const HomePage = async () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "lacy.is",
-    url: "https://lacy.is",
+    url: SITE_URL,
     author: {
       "@type": "Person",
       name: "Lacy Morrow",
@@ -72,6 +73,9 @@ const HomePage = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AnimatedNoise opacity={0.1} />
+      {/* The visible wordmark is a randomly picked display font, so the page
+          heading lives here: always present, always the same text. */}
+      <h1 className="sr-only">Lacy Morrow</h1>
       <LacyLogo />
       <article className="flex max-w-lg flex-col">
         <List
