@@ -69,9 +69,9 @@ const glitch = Rubik_Glitch({
 });
 
 const logos = [
-  <h1 className={cn(rock.className, "text-[5rem]")} key="lacy-1">
+  <div className={cn(rock.className, "text-[5rem]")} key="lacy-1">
     Lacy
-  </h1>,
+  </div>,
   <EnhancedText
     text="Lacy"
     className={cn(slackside.className, "text-[5rem]")}

@@ -11,18 +11,14 @@ import { TRPCReactProvider } from "~/trpc/react";
 import "~/app/globals.css";
 
 import { Toaster } from "@/components/ui/sonner";
-import { env } from "~/env";
+import { SITE_URL } from "~/site";
 
 const title = "Lacy Morrow";
 const description =
   "Lacy Morrow builds software. Juno, Shipkit, Lacy Shell, CrossOver, fly5 and Build and Serve, all in one place.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    env.VERCEL_ENV === "production"
-      ? "https://lacy.is"
-      : "http://localhost:3000",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: { default: title, template: `%s | ${title}` },
   description,
   authors: [{ name: "Lacy Morrow", url: "https://lacymorrow.com" }],
@@ -31,13 +27,15 @@ export const metadata: Metadata = {
     type: "website",
     title,
     description,
-    url: "https://lacy.is",
+    url: SITE_URL,
     siteName: "lacy.is",
-    images: [{ url: "https://lacy.is/api/og", width: 1200, height: 630, alt: "lacy.is" }],
+    images: [
+      { url: `${SITE_URL}/api/og`, width: 1200, height: 630, alt: "lacy.is" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["https://lacy.is/api/og"],
+    images: [`${SITE_URL}/api/og`],
     creator: "@lacybuilds",
     title,
     description,
